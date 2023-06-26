@@ -17,17 +17,32 @@ public class MathUtility {
     //Giai thừa tăng nhanh, 20! vừa khớp full kiểu long
     //Do đó 21! không dùng kiểu long được. Nếu đưa > 21, chửi
     //CHỬI: không trả về giá trị gì cả mà NÉM RA NGOẠI LỆ EXCEPTION
+//    public static long getFactorial(int n){
+//        if (n < 0 || n > 20) 
+//            throw new IllegalArgumentException("Invalid n. n must be between 0..20, plz");
+//        if (n == 0 || n == 1)
+//            return 1;
+//        long product = 1; //Tích phân dồn khởi động từ 1
+//        for (int i = 2; i <= n; i++)
+//            product *=i;
+//        return product;
+//    }
+    
     public static long getFactorial(int n){
         if (n < 0 || n > 20) 
             throw new IllegalArgumentException("Invalid n. n must be between 0..20, plz");
         if (n == 0 || n == 1)
             return 1;
-        long product = 1; //Tích phân dồn khởi động từ 1
-        for (int i = 2; i <= n; i++)
-            product *=i;
-        return product;
+        return n*getFactorial(n-1);
     }
 }
+
+//5! = 1.2.3.4.5 = 5.4!
+//4! = 4.3!
+//3! = 3.2!
+//2! = 2.1!
+//1! = 1 dừng lại, hồi ngược lên trên
+//N! = N x (N - 1)!
 
 //TDD: Test Driven Development phát triển phần mềm theo phong cách
 //code đến đâu kiểm thử đến đó, viết code và viết test case/test run diễn ra song song, đan xen
